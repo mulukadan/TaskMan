@@ -9,8 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.m.taskman.models.com.m.models.DorisService;
+
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.username) EditText username;
@@ -36,10 +43,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v == LoginBtn) {
             String user = username.getText().toString();
             String Pw = password.getText().toString();
+//            String url = "http://"+user+":"+Pw+"@beta.dorisapp.com/api/1_0/auth/get_key.json";
+            //getting the API KEY
+            final DorisService dorisService = new DorisService();
 
-            Intent intent = new Intent(LoginActivity.this, AllTasksViewActivity.class);
-//            intent.putExtra("location", location);
-            startActivity(intent);
+            dorisService.authenticateUser(user, Pw, new Callback() {
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) {
+                    final String APIKey = dorisService.getAPIKey(response);
+
+                    LoginActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (APIKey != null) {
+                                Intent intent = new Intent(LoginActivity.this, AllTasksViewActivity.class);
+                                intent.putExtra("APIKEY", APIKey);
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                }
+            });
+
+
         }
         else if(v == forgotPswd) {
             String ForgotPassURL = "http://beta.dorisapp.com/en/user/password/";

@@ -28,4 +28,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'se.akerfeldt:okhttp-signpost:1.1.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+    // Required if generating equals, hashCode, or toString methods
+    compile 'commons-lang:commons-lang:2.6'
+    // Required if generating JSR-303 annotations
+    compile 'javax.validation:validation-api:1.1.0.CR2'
+    // Required if generating Jackson 2 annotations
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.1.4'
 }

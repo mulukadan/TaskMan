@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.m.taskman.models.com.m.models.DorisService;
 
@@ -65,6 +66,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 Intent intent = new Intent(LoginActivity.this, AllTasksViewActivity.class);
                                 intent.putExtra("APIKEY", APIKey);
                                 startActivity(intent);
+                            }else {
+                                //display in long period of time
+                                Toast.makeText(getApplicationContext(), "Wrong UserName or Password",
+                                        Toast.LENGTH_LONG).show();
                             }
                         }
                     });

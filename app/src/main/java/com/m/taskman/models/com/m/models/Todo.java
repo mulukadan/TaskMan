@@ -54,6 +54,26 @@ public class Todo {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    public Todo(){ }
+
+    public Todo(String todoId, String todoGroupId, String usrId, String description, String note, String itemOrder,
+                String status, String isImportant, String isToday, String estimatedTime, String dateCreated, String lastUpdated, Map<String, Object> additionalProperties)
+                {
+                    this.todoId = todoId;
+                    this.todoGroupId = todoGroupId;
+                    this.usrId = usrId;
+                    this.description = description;
+                    this.note = note;
+                    this.itemOrder = itemOrder;
+                    this.status = status;
+                    this.isImportant = isImportant;
+                    this.isToday = isToday;
+                    this.estimatedTime = estimatedTime;
+                    this.dateCreated = dateCreated;
+                    this.lastUpdated = lastUpdated;
+                    this.additionalProperties = additionalProperties;
+                }
+
     @JsonProperty("todo_id")
     public String getTodoId() {
         return todoId;

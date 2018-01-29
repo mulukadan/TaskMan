@@ -25,7 +25,7 @@ public class Group {
     @JsonProperty("group_id")
     private Object groupId;
     @JsonProperty("group_name")
-    private Object groupName;
+    private String groupName;
     @JsonProperty("is_today")
     private Object isToday;
     @JsonProperty("group_order")
@@ -48,12 +48,12 @@ public class Group {
     }
 
     @JsonProperty("group_name")
-    public Object getGroupName() {
+    public String getGroupName() {
         return groupName;
     }
 
     @JsonProperty("group_name")
-    public void setGroupName(Object groupName) {
+    public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
 

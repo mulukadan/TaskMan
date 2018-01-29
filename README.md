@@ -6,8 +6,8 @@
 
 
 # Technologies used!
-    Doris API for creating and managing Tasks
-    Android
+   - Doris API for creating and managing Tasks
+   - Android
 
 ## Developed by Mulu Kadan, 2018
 
